@@ -1,1 +1,2 @@
-^PE[0-9]{8}$|^[0-9]{10}$|^PP[0-9]{8}$
+^PE[0-9]{8}$|^[0-9]{10}$|^PP[0-9]{8}$ -- expresion para boletas
+^[0-9]{10}$                           -- expresion para telefonos
