@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de datos genereales</title>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+    <script src="validaciones.js"></script>
 </head>
 <body style="background-color:beige">
     <div style="text-align: center;">
@@ -12,12 +18,13 @@
         <h2>Alumnos de Nuevo Ingreso</h2>
         <h2>(Enero 2024)</h2>
     </div>
-    <form name="Registro" method="get" action="respuesta.html">
+    <form name="Registro"   method="get" action="respuesta.html" onsubmit="return ValidarFormulario()">
         <fieldset>
             <legend>Identidad</legend>
                 <label for="No.Boleta">Número Boleta:</label>
-                <input type="text" maxlength="10" name="No.Boleta" id ="No.Boleta"  placeholder="Solo numeros"/></br>
-                <label for="Nombre">Nombre:</label>
+                <input type="text" maxlength="10" name="No.Boleta" id ="No.Boleta"  placeholder="Solo numeros"/>
+                <span id="errorNoBoleta" class="error"></span>
+                <br><label for="Nombre">Nombre:</label>
                 <input type="text" name="Name"  id ="Nombre" placeholder="Ingresa solo tus nombres "></br>
                 <label for="ApPaterno">Apellido Paterno:</label>
                 <input type="text" name="Apellido Paterno"  id ="ApPaterno" placeholder="Ingresa solo tu Apellido Paterno "></br>
@@ -66,10 +73,10 @@
             <input type="tel" name="CodigoPostal" maxlength="5"><br>
 
                     <label for="Telefono">Telefono:</label>
-            <input type="tel" name="Telefono" maxlength="10"><br>
+            <input type="tel" name="Telefono" id="telefono" maxlength="10"><br>
 
             	<label for="correo">Correo:</label>
-		<input type="email" name="correo" id=""><br>
+		<input type="email" name="correo" id="correo"><br>
         </fieldset>      
 
         <fieldset>
