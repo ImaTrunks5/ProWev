@@ -14,6 +14,7 @@
             <h1>Escuela Superior de Computo</h1>
             <div class="row">
                 <div class="col-12">
+                    <!-- Creación del nav -->
                     <ul class="nav nav-tabs" id="misPestañas" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pestañaIdentidad" data-bs-toggle="tab" data-bs-target="#panelPestañaIdentidad" type="button" role="tab" aria-controls="panelPestañaIdentidad" aria-selected="true">Identidad</button>
@@ -28,143 +29,232 @@
                             <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
                         </li>
                     </ul>
+                    <!-- Todo lo que va dentro de cada pestaña -->
                     <div class="tab-content" id="myTabContent">
+                        <!-- Pestaña Identidad -->
                         <div class="tab-pane fade show active" id="panelPestañaIdentidad" role="tabpanel" aria-labelledby="pestañaIdentidad" tabindex="0">
                             <fieldset id="identidad">
-                                <label for="No.Boleta">Número Boleta:</label>
-                                <input type="text" maxlength="10" name="No.Boleta" id ="No.Boleta"  placeholder="Solo numeros"/></br>
-                                <label for="Nombre">Nombre:</label>
-                                <input type="text" name="Name"  id ="Nombre" placeholder="Ingresa solo tus nombres "></br>
-                                <label for="ApPaterno">Apellido Paterno:</label>
-                                <input type="text" name="Apellido Paterno"  id ="ApPaterno" placeholder="Ingresa solo tu Apellido Paterno "></br>
-                                <label for="ApMaterno">Apellido Materno:</label>
-                                <input type="text" name="Apellido Materno"  id ="ApMaterno" placeholder="Ingresa solo tu Apellido Materno "></br>
-                                <label for="Fecha">Fecha de Nacimeinto:</label>
-                                <input type="date" name="Fecha" id="Fecha" placeholder="Introduce tu fecha de Nacimeinto"></br>
-                                <label for="Genero">Género:</label>
+                                <!-- <label for="NoBoleta">Número de Boleta:</label> -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="NoBoleta" id="floatingBoleta" class="form-control" placeholder="202X63XXXX"/>
+                                    <label for="floatingBoleta">Número de Boleta:</label>
+                                </div>
+                                <!-- <label for="Nombre">Nombre:</label> -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="Nombre" id="floatingNombre" class="form-control" placeholder="Ingresa tus nombres.">
+                                    <label for="floatingNombre">Nombre:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                <!-- <label for="ApPaterno">Apellido Paterno:</label> -->
+                                    <input type="text" name="Apellido Paterno" id="floatingApPaterno" class="form-control" placeholder="Ingresa tu Apellido Paterno.">
+                                    <label for="floatingApPaterno">Apellido Paterno:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="ApMaterno">Apellido Materno:</label> -->
+                                    <input type="text" name="Apellido Materno"  id="floatingApMaterno" class="form-control" placeholder="Ingresa solo tu Apellido Materno ">
+                                    <label for="floatingApMaterno">Apellido Materno:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="CURP">CURP:</label> -->
+                                    <input type="tel" maxlength="18" name="CURP" id="floatingCURP" class="form-control" placeholder="Ingresa tu CURP"/>
+                                    <label for="floatingCURP">CURP:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="Fecha">Fecha de Nacimeinto:</label> -->
+                                    <input type="date" name="Fecha" id="floatingFecha" class="form-control" placeholder="Introduce tu fecha de Nacimeinto">
+                                    <label for="floatingFecha">Fecha de Nacimeinto:</label>
+                                </div>
+                                <!-- <label for="Genero">Género:</label>
                                 <input type="radio" name="Genero" id="Genero"/>Masculino &nbsp;&nbsp;
                                 <input type="radio" name="Genero" id="Genero"/>Femenino &nbsp;&nbsp;
-                                <input type="radio" name="Genero" id="Genero"/>Otro</br>
-                                <label for="CURP">CURP:</label>
-                                <input type="tel" maxlength="18" name="CURP" id ="CURP" placeholder="Ingresa tu CURP"/></br>
+                                <input type="radio" name="Genero" id="Genero"/>Otro</br> -->
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-2 pt-0">Género:</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="masculinoRadio" id="masculinoRadio" value="masculino" checked>
+                                            <label class="form-check-label" for="masculinoRadio">
+                                            Masculino.
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="femeninoRadio" id="femeninoRadio" value="femenino">
+                                            <label class="form-check-label" for="femeninoRadio">
+                                            Femenino.
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="otroRadio" id="otroRadio" value="otro">
+                                            <label class="form-check-label" for="otroRadio">
+                                            Otro.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </fieldset>
                         </div>
+                        <!-- Pestaña Contacto -->
                         <div class="tab-pane fade" id="panelPestañaContacto" role="tabpanel" aria-labelledby="pestañaContacto" tabindex="0">
                             <fieldset id="contacto">
-                                <label for="nombre">Calle:</label>
-                                <input type="text" name="Calle" placeholder="" />
-                                <label for="numero">Número:</label>
-                                <input type="text" name="Numero" id="" size="4"><br>
-                                <label for="Alcaldia">Alcaldía:</label>
-                                <select name="Alcaldia" id="Alcaldia">
-                                    <option value="AlvaroObregon">Álvaro Obregón</option>
-                                    <option value="Azcapotzalco">Azcapotzalco</option>
-                                    <option value="BenitoJuarez">Benito Juárez</option>
-                                    <option value="Coyoacan">Coyoacán</option>
-                                    <option value="Cuajimalpa">Cuajimalpa de Morelos</option>
-                                    <option value="Cuauhtemoc">Cuauhtémoc</option>
-                                    <option value="GustavoMadero">Gustavo A. Madero</option>
-                                    <option value="Iztacalco">Iztacalco</option>
-                                    <option value="Iztapalapa">Iztapalapa</option>
-                                    <option value="LaMagdalenaContreras">La Magdalena Contreras</option>
-                                    <option value="MiguelHidalgo">Miguel Hidalgo</option>
-                                    <option value="MilpaAlta">Milpa Alta</option>
-                                    <option value="Tlahuac">Tláhuac</option>
-                                    <option value="Tlalpan">Tlalpan</option>
-                                    <option value="VenustianoCarranza">Venustiano Carranza</option>
-                                    <option value="Xochimilco">Xochimilco</option>
-                                </select><br>
-                
-                                <label for="CodigoPostal">Código Postal:</label>
-                                <input type="tel" name="CodigoPostal" maxlength="5"><br>
-                
-                                <label for="Telefono">Telefono:</label>
-                                <input type="tel" name="Telefono" maxlength="10"><br>
-                
-                                <label for="correo">Correo:</label>
-                                <input type="email" name="correo" id=""><br>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="nombre">Calle:</label> -->
+                                    <input type="text" name="Calle" id="floatingCalle" class="form-control" placeholder=" "/>
+                                    <label for="floatingCalle">Calle:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="numero">Número:</label> -->
+                                    <input type="text" name="NumeroC" id="floatingNumeroC" class="form-control" placeholder=" " size="4">
+                                    <label for="floatingNumeroC">Número:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="Alcaldia">Alcaldía:</label> -->
+                                    <select name="Alcaldia" id="floatingAlcaldia" class="form-control">
+                                        <option value="AlvaroObregon">Álvaro Obregón</option>
+                                        <option value="Azcapotzalco">Azcapotzalco</option>
+                                        <option value="BenitoJuarez">Benito Juárez</option>
+                                        <option value="Coyoacan">Coyoacán</option>
+                                        <option value="Cuajimalpa">Cuajimalpa de Morelos</option>
+                                        <option value="Cuauhtemoc">Cuauhtémoc</option>
+                                        <option value="GustavoMadero">Gustavo A. Madero</option>
+                                        <option value="Iztacalco">Iztacalco</option>
+                                        <option value="Iztapalapa">Iztapalapa</option>
+                                        <option value="LaMagdalenaContreras">La Magdalena Contreras</option>
+                                        <option value="MiguelHidalgo">Miguel Hidalgo</option>
+                                        <option value="MilpaAlta">Milpa Alta</option>
+                                        <option value="Tlahuac">Tláhuac</option>
+                                        <option value="Tlalpan">Tlalpan</option>
+                                        <option value="VenustianoCarranza">Venustiano Carranza</option>
+                                        <option value="Xochimilco">Xochimilco</option>
+                                    </select>
+                                    <label for="floatingAlcaldia">Alcaldía:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="CodigoPostal">Código Postal:</label> -->
+                                    <input type="tel" name="CodigoPostal" id="floatingCP" class="form-control" placeholder=" " maxlength="5">
+                                    <label for="floatingCP">Código Postal:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="Telefono">Telefono:</label> -->
+                                    <input type="tel" name="Telefono" id="floatingTel" class="form-control" placeholder=" " maxlength="10">
+                                    <label for="floatingTel">Teléfono:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="correo">Correo:</label> -->
+                                    <input type="email" name="correo" id="floatingCorreo" class="form-control" placeholder="abcd@ejemplo.com">
+                                    <label for="floatingCorreo">Correo:</label>
+                                </div>
                             </fieldset>
                         </div>
+                        <!-- Pestaña Procedencia -->
                         <div class="tab-pane fade" id="panelPestañaProcedencia" role="tabpanel" aria-labelledby="pestañaProcedencia" tabindex="0">
                             <fieldset>
-                                <label for="EscProc">Escuela de procedencia: </label>
-                                <select name="Cecyt" id="cecyt">
-                                    <option value="Cecyt1">CECyT 1 “González Vázquez Vega”</option>
-                                    <option value="Cecyt2">CECyT 2 "Miguel Bernard"</option>
-                                    <option value="Cecyt3">CECyT 3 "Estanislao Ramírez Ruiz"</option>
-                                    <option value="Cecyt4">CECyT 4 "Lázaro Cárdenas"</option>
-                                    <option value="Cecyt5">CECyT 5 "Benito Juárez García"</option>
-                                    <option value="Cecyt6">CECyT 6 "Miguel Othón de Mendizábal"</option>
-                                    <option value="Cecyt7">CECyT 7 "Cuauhtémoc"</option>
-                                    <option value="Cecyt8">CECyT 8 "Narciso Bassols García"</option>
-                                    <option value="Cecyt9">CECyT 9 "Juan de Dios Bátiz"</option>
-                                    <option value="Cecyt10">CECyT 10 "Carlos Vallejo Márquez"</option>
-                                    <option value="Cecyt11">CECyT 11 "Wilfrido Massieu Pérez"</option>
-                                    <option value="Cecyt12">CECyT 12 "José María Morelos y Pavón"</option>
-                                    <option value="Cecyt13">CECyT 13 "Ricardo Flores Magón"</option>
-                                    <option value="Cecyt14">CECyT 14 "Luis Enrique Erro"</option>
-                                    <option value="Cecyt15">CECyT 15 "Diódoro Antúnez Echegaray"</option>
-                                    <option value="Cecyt16">CECYT 16 "Hidalgo"</option>
-                                    <option value="Cecyt17">CECYT 17 "León, Guanajuato"</option>
-                                    <option value="Cecyt18">CECYT 18 "Zacatecas"</option>
-                                    <option value="Cecyt19">CECyT 19 “Leona Vicario”</option>
-                                    <option value="Cet">CET 1 “Walter Cross Buchanan”</option>
-                                    <option value="Otros">Otra escuela</option>
-                                </select><br>
-                
-                                <label for="EntidadFederativa">Entidad Federativa</label>
-                                <select name="EntidadFederativa" id="EntidadFederativa">
-                                    <option value="Aguascalientes">Aguascalientes</option>
-                                    <option value="Baja California">Baja California</option>
-                                    <option value="Baja California Sur">Baja California Sur</option>
-                                    <option value="Campeche">Campeche</option>
-                                    <option value="Chiapas">Chiapas</option>
-                                    <option value="Chihuahua">Chihuahua</option>
-                                    <option value="Coahuila">Coahuila</option>
-                                    <option value="Colima">Colima</option>
-                                    <option value="Ciudad de México">Ciudad de México</option>
-                                    <option value="Durango">Durango</option>
-                                    <option value="Guanajuato">Guanajuato</option>
-                                    <option value="Guerrero">Guerrero</option>
-                                    <option value="Hidalgo">Hidalgo</option>
-                                    <option value="Jalisco">Jalisco</option>
-                                    <option value="México">México</option>
-                                    <option value="Michoacán">Michoacán</option>
-                                    <option value="Morelos">Morelos</option>
-                                    <option value="Nayarit">Nayarit</option>
-                                    <option value="Nuevo León">Nuevo León</option>
-                                    <option value="Oaxaca">Oaxaca</option>
-                                    <option value="Puebla">Puebla</option>
-                                    <option value="Querétaro">Querétaro</option>
-                                    <option value="Quintana Roo">Quintana Roo</option>
-                                    <option value="San Luis Potosí">San Luis Potosí</option>
-                                    <option value="Sinaloa">Sinaloa</option>
-                                    <option value="Sonora">Sonora</option>
-                                    <option value="Tabasco">Tabasco</option>
-                                    <option value="Tamaulipas">Tamaulipas</option>
-                                    <option value="Tlaxcala">Tlaxcala</option>
-                                    <option value="Veracruz">Veracruz</option>
-                                    <option value="Yucatán">Yucatán</option>
-                                    <option value="Zacatecas">Zacatecas</option>
-                                    <option value="Extranjero">Extranjero</option>
-                                </select><br>
-                
-                
-                
-                
-                                <label for="NomEsc">Nombre de la escuela: </label>
-                                <input type="text" name="NomEsc" id="nomEsc"><br>
-                                <label for="Prom">Promedio: </label>
-                                <input type="text" name="Prom" id="prom"><br>
-                                <label for="EscomFue">ESCOM fue tu: </label>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="EscProc">Escuela de procedencia: </label> -->
+                                    <select name="EscP" id="floatingEscP" class="form-control">
+                                        <option value="Cecyt1">CECyT 1 “González Vázquez Vega”</option>
+                                        <option value="Cecyt2">CECyT 2 "Miguel Bernard"</option>
+                                        <option value="Cecyt3">CECyT 3 "Estanislao Ramírez Ruiz"</option>
+                                        <option value="Cecyt4">CECyT 4 "Lázaro Cárdenas"</option>
+                                        <option value="Cecyt5">CECyT 5 "Benito Juárez García"</option>
+                                        <option value="Cecyt6">CECyT 6 "Miguel Othón de Mendizábal"</option>
+                                        <option value="Cecyt7">CECyT 7 "Cuauhtémoc"</option>
+                                        <option value="Cecyt8">CECyT 8 "Narciso Bassols García"</option>
+                                        <option value="Cecyt9">CECyT 9 "Juan de Dios Bátiz"</option>
+                                        <option value="Cecyt10">CECyT 10 "Carlos Vallejo Márquez"</option>
+                                        <option value="Cecyt11">CECyT 11 "Wilfrido Massieu Pérez"</option>
+                                        <option value="Cecyt12">CECyT 12 "José María Morelos y Pavón"</option>
+                                        <option value="Cecyt13">CECyT 13 "Ricardo Flores Magón"</option>
+                                        <option value="Cecyt14">CECyT 14 "Luis Enrique Erro"</option>
+                                        <option value="Cecyt15">CECyT 15 "Diódoro Antúnez Echegaray"</option>
+                                        <option value="Cecyt16">CECYT 16 "Hidalgo"</option>
+                                        <option value="Cecyt17">CECYT 17 "León, Guanajuato"</option>
+                                        <option value="Cecyt18">CECYT 18 "Zacatecas"</option>
+                                        <option value="Cecyt19">CECyT 19 “Leona Vicario”</option>
+                                        <option value="Cet">CET 1 “Walter Cross Buchanan”</option>
+                                        <option value="Otros">Otra escuela</option>
+                                    </select>
+                                    <label for="floatingEscP">Escuela de procedencia:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="EntidadFederativa">Entidad Federativa</label> -->
+                                    <select name="EntidadFederativa" id="floatingEntidadFederativa" class="form-control">
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="Coahuila">Coahuila</option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Ciudad de México">Ciudad de México</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="México">México</option>
+                                        <option value="Michoacán">Michoacán</option>
+                                        <option value="Morelos">Morelos</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz">Veracruz</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>
+                                        <option value="Extranjero">Extranjero</option>
+                                    </select>
+                                    <label for="floatingEntidadFederativa">Entidad Federativa:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="NomEsc">Nombre de la escuela: </label> -->
+                                    <input type="text" name="NomEsc" id="floatingNomEsc" class="form-control" placeholder=" ">
+                                    <label for="floatingNomEsc">Nombre de la escuela:</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <!-- <label for="Prom">Promedio: </label> -->
+                                    <input type="number" name="Promedio" id="floatingPromedio" class="form-control" placeholder=" ">
+                                    <label for="floatingPromedio">Promedio:</label>
+                                </div>
+                                <!-- <label for="EscomFue">ESCOM fue tu: </label>
                                 <input type="checkbox" name="OP" id="OP">1er. Opción &nbsp;&nbsp;
                                 <input type="checkbox" name="OP" id="OP">2da. Opción &nbsp;&nbsp;
                                 <input type="checkbox" name="OP" id="OP">3ra. Opción &nbsp;&nbsp;
-                                <input type="checkbox" name="OP" id="OP">4ta. Opción &nbsp;&nbsp;
-                
-                
+                                <input type="checkbox" name="OP" id="OP">4ta. Opción &nbsp;&nbsp; -->
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-2 pt-0">ESCOM fue tu: </legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="1erOpRadio" id="1erOpRadio" value="PrimerOp" checked>
+                                            <label class="form-check-label" for="1erOpRadio">
+                                            1er. Opción.
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="2daOpRadio" id="2daOpRadio" value="SegundaOp">
+                                            <label class="form-check-label" for="2daOpRadio">
+                                            2da. Opción.
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="3erOpRadio" id="3erOpRadio" value="TercerOp">
+                                            <label class="form-check-label" for="3erOpRadio">
+                                            3era. Opción.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </fieldset>
                         </div>
+                        <!-- ???? -->
                         <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
 
                         </div>
