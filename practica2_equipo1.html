@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="./Proyecto.css">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>.::Proyecto::.</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Escuela Superior de Computo</h1>
-            <div class="row">
-                <div class="col-12">
-                    <!-- Creación del nav -->
-                    <form>
-                    <ul class="nav nav-tabs" id="misPestañas" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pestañaIdentidad" data-bs-toggle="tab" data-bs-target="#panelPestañaIdentidad" type="button" role="tab" aria-controls="panelPestañaIdentidad" aria-selected="true">Identidad</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pestañaContacto" data-bs-toggle="tab" data-bs-target="#panelPestañaContacto" type="button" role="tab" aria-controls="panelPestañaContacto" aria-selected="false">Contacto</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pestañaProcedencia" data-bs-toggle="tab" data-bs-target="#panelPestañaProcedencia" type="button" role="tab" aria-controls="panelPestañaProcedencia" aria-selected="false">Procedencia</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-                        </li>
-                    </ul>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Proyecto.css">
+
+    <title>.::Proyecto::.</title>
+</head>
+<body id="cuerpo">
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="./img/logoIpn.png" alt width="72" height="57">
+            <h1>Escuela Superior de Cómputo</h1>
+            <p class="lead">Ingresa los siguientes datos para que se te pueda asignar un salón y horario para que puedas realizar tu examen diagnostico.</p>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Creación del nav -->
+                <ul class="nav nav-tabs" id="misPestañas" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pestañaIdentidad" data-bs-toggle="tab" data-bs-target="#panelPestañaIdentidad" type="button" role="tab" aria-controls="panelPestañaIdentidad" aria-selected="true">Identidad</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pestañaContacto" data-bs-toggle="tab" data-bs-target="#panelPestañaContacto" type="button" role="tab" aria-controls="panelPestañaContacto" aria-selected="false">Contacto</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pestañaProcedencia" data-bs-toggle="tab" data-bs-target="#panelPestañaProcedencia" type="button" role="tab" aria-controls="panelPestañaProcedencia" aria-selected="false">Procedencia</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+                    </li>
+                </ul>
+                <!-- Creación del form -->
+                <form>
                     <!-- Todo lo que va dentro de cada pestaña -->
                     <div class="tab-content" id="myTabContent">
                         <!-- Pestaña Identidad -->
@@ -330,10 +335,10 @@
 
                         </div>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 </html>
