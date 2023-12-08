@@ -25,3 +25,21 @@ function habilitarNomEsc() //Función para habilitar el input Nombre Escuela al 
         InputNomEsc.disabled = true;
     }
 }
+
+function habilitarAlcOMun() //Función para habilitar el input Alcaldía o Municipio dependiendo si se selecciona CDMX
+{
+    let selectEst = document.getElementById("floatingEntidadFederativa");
+    let selectAl = document.getElementById("floatingAlcaldia");
+    let InputMun = document.getElementById("floatingMunAl");
+
+    let ValorEst = selectEst.value;
+
+    if (ValorEst == "CiudadDeMexico") 
+    {
+        selectAl.disabled = false;
+        InputMun.disabled = true;    
+    } else {
+        selectAl.disabled = true;
+        InputMun.disabled = false;
+    }
+}
