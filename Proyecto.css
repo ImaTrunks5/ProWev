@@ -12,16 +12,56 @@
     padding: 20px;
 }
 
-#cuerpo{
+#cuerpo
+{
     margin: 0;
     padding: 0;
-    background-image: url("./logoESCOM.png");
+    background-image: url("./img/logoESCOM.png");
     background-repeat: repeat;
     background-size: 285px 360px;
 }
 
-.container{
+.container
+{
     background-color: white;
     border: 2px solid #3C9DDC;
     border-radius: 10px;
+}
+
+.navbar
+{
+    background-color: #e3f2fd;
+}
+
+#LogoESCOMNav
+{
+    width: 95%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+
+.menuPrin
+{
+    color: #3C9DDC;
+}
+
+.menuPrin:hover
+{
+    background-color: rgb(57, 123, 190);
+    color: white;
+    border-radius: 10px;
+}
+
+.activo
+{
+    background-color: rgb(57, 123, 190);
+    color: white;
+    border-radius: 10px;
+}
+
+#IPN
+{
+    color: rgb(102, 17, 17);
+    font-style: inherit;
 }
