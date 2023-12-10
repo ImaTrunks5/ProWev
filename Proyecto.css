@@ -65,3 +65,8 @@
     color: rgb(102, 17, 17);
     font-style: inherit;
 }
+
+.error
+{
+    color: red;
+}

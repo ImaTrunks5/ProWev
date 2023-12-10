@@ -4,23 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Proyecto.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="./Proyecto.css">
     <script src="./ProyectoJs.js"></script>
+    <script src="./validaciones.js"></script>
+    <script src="./estados.js" defer></script>
 
     <title>.::Proyecto::.</title>
 </head>
 <body id="cuerpo">
+    <!-- Nav principal -->
+    <nav class="navbar navbar-expand-sm justify-content-sm-center sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://escom.ipn.mx/">
+                <img src="./img/logoESCOM.png" id="LogoESCOMNav" alt="ESCOM" width="60" height="48">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"">&#9776</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item" id="navPrincipal">
+                        <a class="nav-link menuPrin" href="./inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menuPrin activo" href="./proyecto.html">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menuPrin" href="./recuperarPDF.html">Recuperar PDF</a>
+                    </li>
+                </ul>
+            </div>
+
+            <span class="navbar-text justify-content-end" id="IPN">Instituto Politécnico Nacional</span>
+        </div>
+    </nav>
     <div class="container">
         <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="./img/logoIpn.png" alt width="72" height="57">
+            <img class="d-block mx-auto mb-4" src="./img/logoIpn.png" id="LogoIPNhead" alt="LogoIPN" width="72" height="57">
             <h1>Escuela Superior de Cómputo</h1>
             <p class="lead">Ingresa los siguientes datos para que se te pueda asignar un salón y horario para que puedas realizar tu examen diagnóstico.</p>
         </div>
         <div class="row">
             <div class="col-12">
-                <!-- Creación del nav -->
+                <!-- Creación del nav de pestañas -->
                 <ul class="nav nav-tabs" id="misPestañas" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="pestañaIdentidad" data-bs-toggle="tab" data-bs-target="#panelPestañaIdentidad" type="button" role="tab" aria-controls="panelPestañaIdentidad" aria-selected="true">Identidad</button>
@@ -31,51 +61,43 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pestañaProcedencia" data-bs-toggle="tab" data-bs-target="#panelPestañaProcedencia" type="button" role="tab" aria-controls="panelPestañaProcedencia" aria-selected="false">Procedencia</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-                    </li>
                 </ul>
                 <!-- Creación del form -->
-                <form>
+                <form name="Registro" method="get" onsubmit="return ValidarFormulario();">
                     <!-- Todo lo que va dentro de cada pestaña -->
                     <div class="tab-content" id="myTabContent">
                         <!-- Pestaña Identidad -->
                         <div class="tab-pane fade show active" id="panelPestañaIdentidad" role="tabpanel" aria-labelledby="pestañaIdentidad" tabindex="0">
                             <fieldset id="identidad">
-                                <!-- <label for="NoBoleta">Número de Boleta:</label> -->
                                 <div class="form-floating mb-3">
                                     <input type="text" name="NoBoleta" id="floatingBoleta" class="form-control" placeholder="202X63XXXX"/>
                                     <label for="floatingBoleta">Número de Boleta:</label>
+                                    <span id="errorNoBoleta" class="error"></span>
                                 </div>
-                                <!-- <label for="Nombre">Nombre:</label> -->
                                 <div class="form-floating mb-3">
                                     <input type="text" name="Nombre" id="floatingNombre" class="form-control" placeholder="Ingresa tus nombres.">
                                     <label for="floatingNombre">Nombre:</label>
+                                    <span id="errorNombre" class="error"></span>
                                 </div>
                                 <div class="form-floating mb-3">
-                                <!-- <label for="ApPaterno">Apellido Paterno:</label> -->
                                     <input type="text" name="Apellido Paterno" id="floatingApPaterno" class="form-control" placeholder="Ingresa tu Apellido Paterno.">
                                     <label for="floatingApPaterno">Apellido Paterno:</label>
+                                    <span id="errorApPaterno" class="error"></span>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="ApMaterno">Apellido Materno:</label> -->
                                     <input type="text" name="Apellido Materno"  id="floatingApMaterno" class="form-control" placeholder="Ingresa solo tu Apellido Materno ">
                                     <label for="floatingApMaterno">Apellido Materno:</label>
+                                    <span id="errorApMaterno" class="error"></span>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="CURP">CURP:</label> -->
                                     <input type="tel" maxlength="18" name="CURP" id="floatingCURP" class="form-control" placeholder="Ingresa tu CURP"/>
                                     <label for="floatingCURP">CURP:</label>
+                                    <span id="errorCurp" class="error"></span>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="Fecha">Fecha de Nacimeinto:</label> -->
                                     <input type="date" name="Fecha" id="floatingFecha" class="form-control" placeholder="Introduce tu fecha de Nacimeinto">
                                     <label for="floatingFecha">Fecha de Nacimeinto:</label>
                                 </div>
-                                <!-- <label for="Genero">Género:</label>
-                                <input type="radio" name="Genero" id="Genero"/>Masculino &nbsp;&nbsp;
-                                <input type="radio" name="Genero" id="Genero"/>Femenino &nbsp;&nbsp;
-                                <input type="radio" name="Genero" id="Genero"/>Otro</br> -->
                                 <fieldset class="row mb-3">
                                     <legend class="col-form-label col-sm-2 pt-0">Género:</legend>
                                     <div class="col-sm-10">
@@ -128,92 +150,33 @@
                         <div class="tab-pane fade" id="panelPestañaContacto" role="tabpanel" aria-labelledby="pestañaContacto" tabindex="0">
                             <fieldset id="contacto">
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="nombre">Calle:</label> -->
                                     <input type="text" name="Calle" id="floatingCalle" class="form-control" placeholder=" "/>
                                     <label for="floatingCalle">Calle:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="numero">Número:</label> -->
                                     <input type="text" name="NumeroC" id="floatingNumeroC" class="form-control" placeholder=" " size="4">
                                     <label for="floatingNumeroC">Número:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="EntidadFederativa">Entidad Federativa:</label> -->
-                                    <select name="EntidadFederativa" id="floatingEntidadFederativa" class="form-control">
-                                        <option value="Aguascalientes">Aguascalientes</option>
-                                        <option value="Baja California">Baja California</option>
-                                        <option value="Baja California Sur">Baja California Sur</option>
-                                        <option value="Campeche">Campeche</option>
-                                        <option value="Chiapas">Chiapas</option>
-                                        <option value="Chihuahua">Chihuahua</option>
-                                        <option value="Coahuila">Coahuila</option>
-                                        <option value="Colima">Colima</option>
-                                        <option value="Ciudad de México">Ciudad de México</option>
-                                        <option value="Durango">Durango</option>
-                                        <option value="Guanajuato">Guanajuato</option>
-                                        <option value="Guerrero">Guerrero</option>
-                                        <option value="Hidalgo">Hidalgo</option>
-                                        <option value="Jalisco">Jalisco</option>
-                                        <option value="México">México</option>
-                                        <option value="Michoacán">Michoacán</option>
-                                        <option value="Morelos">Morelos</option>
-                                        <option value="Nayarit">Nayarit</option>
-                                        <option value="Nuevo León">Nuevo León</option>
-                                        <option value="Oaxaca">Oaxaca</option>
-                                        <option value="Puebla">Puebla</option>
-                                        <option value="Querétaro">Querétaro</option>
-                                        <option value="Quintana Roo">Quintana Roo</option>
-                                        <option value="San Luis Potosí">San Luis Potosí</option>
-                                        <option value="Sinaloa">Sinaloa</option>
-                                        <option value="Sonora">Sonora</option>
-                                        <option value="Tabasco">Tabasco</option>
-                                        <option value="Tamaulipas">Tamaulipas</option>
-                                        <option value="Tlaxcala">Tlaxcala</option>
-                                        <option value="Veracruz">Veracruz</option>
-                                        <option value="Yucatán">Yucatán</option>
-                                        <option value="Zacatecas">Zacatecas</option>
-                                        <option value="Extranjero">Extranjero</option>
+                                    <select name="EntidadFederativa" id="floatingEntidadFederativa" onchange="cargarMunicipios();" class="form-control">
                                     </select>
                                     <label for="floatingEntidadFederativa">Entidad Federativa:</label>
                                 </div>
-                                <!-- <div class="form-floating mb-3">
-                                    <label for="Alcaldia">Alcaldía:</label>
-                                    <select name="Alcaldia" id="floatingAlcaldia" class="form-control">
-                                        <option value="AlvaroObregon">Álvaro Obregón</option>
-                                        <option value="Azcapotzalco">Azcapotzalco</option>
-                                        <option value="BenitoJuarez">Benito Juárez</option>
-                                        <option value="Coyoacan">Coyoacán</option>
-                                        <option value="Cuajimalpa">Cuajimalpa de Morelos</option>
-                                        <option value="Cuauhtemoc">Cuauhtémoc</option>
-                                        <option value="GustavoMadero">Gustavo A. Madero</option>
-                                        <option value="Iztacalco">Iztacalco</option>
-                                        <option value="Iztapalapa">Iztapalapa</option>
-                                        <option value="LaMagdalenaContreras">La Magdalena Contreras</option>
-                                        <option value="MiguelHidalgo">Miguel Hidalgo</option>
-                                        <option value="MilpaAlta">Milpa Alta</option>
-                                        <option value="Tlahuac">Tláhuac</option>
-                                        <option value="Tlalpan">Tlalpan</option>
-                                        <option value="VenustianoCarranza">Venustiano Carranza</option>
-                                        <option value="Xochimilco">Xochimilco</option>
-                                    </select>
-                                    <label for="floatingAlcaldia">Alcaldía:</label>
-                                </div> -->
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="MunAl" id="floatingMunAl" class="form-control" placeholder=" ">
-                                    <label for="floatingMunAl">Municipio/Acaldia:</label>
+                                    <select name="MunAl" id="floatingMunAl" class="form-control">
+                                    </select>
+                                    <label for="floatingMunAl">Municipio/Alcaldía:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="CodigoPostal">Código Postal:</label> -->
                                     <input type="tel" name="CodigoPostal" id="floatingCP" class="form-control" placeholder=" " maxlength="5">
                                     <label for="floatingCP">Código Postal:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="Telefono">Telefono:</label> -->
                                     <input type="tel" name="Telefono" id="floatingTel" class="form-control" placeholder=" " maxlength="10">
                                     <label for="floatingTel">Teléfono:</label>
+                                    <span id="errorTelefono" class="error"></span>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="correo">Correo:</label> -->
                                     <input type="email" name="correo" id="floatingCorreo" class="form-control" placeholder="abcd@ejemplo.com">
                                     <label for="floatingCorreo">Correo:</label>
                                 </div>
@@ -225,7 +188,6 @@
                         <div class="tab-pane fade" id="panelPestañaProcedencia" role="tabpanel" aria-labelledby="pestañaProcedencia" tabindex="0">
                             <fieldset>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="EscProc">Escuela de procedencia: </label> -->
                                     <select name="EscP" id="floatingEscP" class="form-control" onchange="habilitarNomEsc();">
                                         <option value="Cecyt1">CECyT 1 “González Vázquez Vega”</option>
                                         <option value="Cecyt2">CECyT 2 "Miguel Bernard"</option>
@@ -251,60 +213,14 @@
                                     </select>
                                     <label for="floatingEscP">Escuela de procedencia:</label>
                                 </div>
-                                <!-- <div class="form-floating mb-3">
-                                    <label for="EntidadFederativa">Entidad Federativa</label>
-                                    <select name="EntidadFederativa" id="floatingEntidadFederativa" class="form-control">
-                                        <option value="Aguascalientes">Aguascalientes</option>
-                                        <option value="Baja California">Baja California</option>
-                                        <option value="Baja California Sur">Baja California Sur</option>
-                                        <option value="Campeche">Campeche</option>
-                                        <option value="Chiapas">Chiapas</option>
-                                        <option value="Chihuahua">Chihuahua</option>
-                                        <option value="Coahuila">Coahuila</option>
-                                        <option value="Colima">Colima</option>
-                                        <option value="Ciudad de México">Ciudad de México</option>
-                                        <option value="Durango">Durango</option>
-                                        <option value="Guanajuato">Guanajuato</option>
-                                        <option value="Guerrero">Guerrero</option>
-                                        <option value="Hidalgo">Hidalgo</option>
-                                        <option value="Jalisco">Jalisco</option>
-                                        <option value="México">México</option>
-                                        <option value="Michoacán">Michoacán</option>
-                                        <option value="Morelos">Morelos</option>
-                                        <option value="Nayarit">Nayarit</option>
-                                        <option value="Nuevo León">Nuevo León</option>
-                                        <option value="Oaxaca">Oaxaca</option>
-                                        <option value="Puebla">Puebla</option>
-                                        <option value="Querétaro">Querétaro</option>
-                                        <option value="Quintana Roo">Quintana Roo</option>
-                                        <option value="San Luis Potosí">San Luis Potosí</option>
-                                        <option value="Sinaloa">Sinaloa</option>
-                                        <option value="Sonora">Sonora</option>
-                                        <option value="Tabasco">Tabasco</option>
-                                        <option value="Tamaulipas">Tamaulipas</option>
-                                        <option value="Tlaxcala">Tlaxcala</option>
-                                        <option value="Veracruz">Veracruz</option>
-                                        <option value="Yucatán">Yucatán</option>
-                                        <option value="Zacatecas">Zacatecas</option>
-                                        <option value="Extranjero">Extranjero</option>
-                                    </select>
-                                    <label for="floatingEntidadFederativa">Entidad Federativa:</label>
-                                </div> -->
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="NomEsc">Nombre de la escuela: </label> -->
                                     <input type="text" name="NomEsc" id="floatingNomEsc" class="form-control" placeholder=" " disabled>
                                     <label for="floatingNomEsc">Nombre de la escuela:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <label for="Prom">Promedio: </label> -->
                                     <input type="number" name="Promedio" id="floatingPromedio" class="form-control" placeholder=" ">
                                     <label for="floatingPromedio">Promedio:</label>
                                 </div>
-                                <!-- <label for="EscomFue">ESCOM fue tu: </label>
-                                <input type="checkbox" name="OP" id="OP">1er. Opción &nbsp;&nbsp;
-                                <input type="checkbox" name="OP" id="OP">2da. Opción &nbsp;&nbsp;
-                                <input type="checkbox" name="OP" id="OP">3ra. Opción &nbsp;&nbsp;
-                                <input type="checkbox" name="OP" id="OP">4ta. Opción &nbsp;&nbsp; -->
                                 <fieldset class="row mb-3">
                                     <legend class="col-form-label col-sm-2 pt-0">ESCOM fue tu: </legend>
                                     <div class="col-sm-10">
@@ -330,11 +246,7 @@
                                 </fieldset>
                             </fieldset>
                             <button type="button" class="btn btn-outline-danger">Limpiar</button>
-                            <button type="button" class="btn btn-outline-primary">Guardar</button>
-                        </div>
-                        <!-- ???? -->
-                        <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
-
+                            <button type="submit" class="btn btn-outline-primary">Guardar</button>
                         </div>
                     </div>
                 </form>
