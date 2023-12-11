@@ -99,3 +99,27 @@ function ValidarFormulario(){
     //alert("estoy en el return true");
     return true;
 }
+   
+  
+      function redirigirAPestaña() {
+        // Activar la pestaña de contacto
+   console.log('Cambiando a la pestaña de contacto');
+
+    var myTab = new bootstrap.Tab(document.querySelector('#pestañaContacto'));
+    myTab.show();
+    document.body.scrollIntoView({
+        behavior: 'smooth' 
+    })
+
+    }
+       function redirigirAPestaña2() {
+        // Activar la pestaña de contacto
+   console.log('Cambiando a la pestaña de contacto');
+
+    var myTab = new bootstrap.Tab(document.querySelector('#pestañaProcedencia'));
+    myTab.show();
+    document.body.scrollIntoView({
+        behavior: 'smooth' 
+    })
+
+    }
