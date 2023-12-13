@@ -101,8 +101,8 @@ function ValidarFormulario(){
 }
    
   
-      function redirigirAPestaña() {
-        // Activar la pestaña de contacto
+function redirigirAPestaña() {
+    // Activar la pestaña de contacto
    console.log('Cambiando a la pestaña de contacto');
 
     var myTab = new bootstrap.Tab(document.querySelector('#pestañaContacto'));
@@ -110,16 +110,15 @@ function ValidarFormulario(){
     document.body.scrollIntoView({
         behavior: 'smooth' 
     })
+}
 
-    }
-       function redirigirAPestaña2() {
-        // Activar la pestaña de contacto
-   console.log('Cambiando a la pestaña de contacto');
+function redirigirAPestaña2() {
+    // Activar la pestaña de contacto
+    console.log('Cambiando a la pestaña de contacto');
 
     var myTab = new bootstrap.Tab(document.querySelector('#pestañaProcedencia'));
     myTab.show();
     document.body.scrollIntoView({
         behavior: 'smooth' 
     })
-
-    }
+}
