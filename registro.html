@@ -14,12 +14,13 @@
     <script>
         $(document).ready(function()
         {
-            $("#mostrarModal").click(function()
+            $("#mostrarModal").click(function() 
             {
+                // Lógica para obtener los valores y mostrar el modal
                 var valoresIdentidad = [];
                 var valoresContacto = [];
 
-                $(".inputIdentidad").each(function()
+                $(".inputIdentidad").each(function() 
                 {
                     valoresIdentidad.push($(this).val());
                 });
@@ -31,28 +32,61 @@
                 var valorEscPro = $("#floatingEscP").val();
                 var promedioInput = $("#floatingPromedio").val();
 
-                $(".inputContacto").each(function()
+                $(".inputContacto").each(function() 
                 {
                     valoresContacto.push($(this).val());
                 });
 
-                $("#Boleta").text(valoresIdentidad[0]);
-                $("#Nombre").text(valoresIdentidad[1]);
-                $("#ApPaterno").text(valoresIdentidad[2]);
-                $("#ApMaterno").text(valoresIdentidad[3]);
-                $("#CURP").text(valoresIdentidad[4]);
-                $("#FechaNac").text(valoresIdentidad[5]);
-                $("#Genero").text(valorGenero);
-                $("#Discapacidad").text(valorDisc);
-                $("#Calle").text(valoresContacto[0]);
-                $("#Numero").text(valoresContacto[1]);
-                $("#EntidadFederativa").text(valorEntFe);
-                $("#MunicipioAlcaldia").text(valorMunAl);
-                $("#CodigoPostal").text(valoresContacto[2]);
-                $("#Telefono").text(valoresContacto[3]);
-                $("#Correo").text(valoresContacto[4]);
-                $("#EscuelaProcedencia").text(valorEscPro);
-                $("#Promedio").text(promedioInput);
+                var valorOpc = $("input[name='OpRadio']:checked").val();
+
+   
+                if (ValidarFormulario()) 
+                {
+                    $("#Boleta").text(valoresIdentidad[0]);
+                    $("#Nombre").text(valoresIdentidad[1]);
+                    $("#ApPaterno").text(valoresIdentidad[2]);
+                    $("#ApMaterno").text(valoresIdentidad[3]);
+                    $("#CURP").text(valoresIdentidad[4]);
+                    $("#FechaNac").text(valoresIdentidad[5]);
+                    $("#Genero").text(valorGenero);
+                    
+                    if (valorDisc == "Otra") 
+                    {
+                        var discapacidadInput = $("#floatingDiscapacidad").val();
+                        
+                        $("#Discapacidad").text(discapacidadInput);
+                    }else{
+                        $("#Discapacidad").text(valorDisc);
+                    }
+                    /* $("#Discapacidad").text(valorDisc); */
+                    
+                    $("#Calle").text(valoresContacto[0]);
+                    $("#Numero").text(valoresContacto[1]);
+                    $("#EntidadFederativa").text(valorEntFe);
+                    $("#MunicipioAlcaldia").text(valorMunAl);
+                    $("#CodigoPostal").text(valoresContacto[2]);
+                    $("#Telefono").text(valoresContacto[3]);
+                    $("#Correo").text(valoresContacto[4]);
+
+                    if (valorEscPro == "Otros") 
+                    {
+                        var escuelaProInput = $("#floatingNomEsc").val();
+
+                        $("#EscuelaProcedencia").text(escuelaProInput);
+                    }else{
+                        $("#EscuelaProcedencia").text(valorEscPro);
+                    }
+                    /* $("#EscuelaProcedencia").text(valorEscPro); */
+                    
+                    $("#Promedio").text(promedioInput);
+
+                    $("#Opcion").text(valorOpc);
+
+        
+                    $('#checkDatos').modal('show');
+                } else {
+                    alert("Por favor rellene todos los campos de manera correcta .");
+                }
             });
         });
     </script>
@@ -148,19 +182,19 @@
                                     <legend class="col-form-label col-sm-2 pt-0">Género:</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="generoRadio" id="masculinoRadio" value="masculino" checked>
+                                            <input class="form-check-input" type="radio" name="generoRadio" id="masculinoRadio" value="Masculino" checked>
                                             <label class="form-check-label" for="masculinoRadio">
                                             Masculino.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="generoRadio" id="femeninoRadio" value="femenino">
+                                            <input class="form-check-input" type="radio" name="generoRadio" id="femeninoRadio" value="Femenino">
                                             <label class="form-check-label" for="femeninoRadio">
                                             Femenino.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="generoRadio" id="otroRadio" value="otro">
+                                            <input class="form-check-input" type="radio" name="generoRadio" id="otroRadio" value="Otro">
                                             <label class="form-check-label" for="otroRadio">
                                             Otro.
                                             </label>
@@ -171,25 +205,25 @@
                                     <legend class="col-form-label col-sm-2 pt-0">A fin de considerar sus necesidades y atenderlas, requerimos saber si usted es una persona:</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="auditivaRadio" value="DisAuditiva" onclick="habilitarDis();">
+                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="auditivaRadio" value="Discapacidad auditiva" onclick="habilitarDis();">
                                             <label class="form-check-label" for="auditivaRadio">
                                             Con discapacidad auditiva.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="sillaRuedasRadio" value="DisMotrizSillaRuedas" onclick="habilitarDis();">
+                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="sillaRuedasRadio" value="Discapacidad motriz usuaria de silla de ruedas" onclick="habilitarDis();">
                                             <label class="form-check-label" for="SillaRuedasRadio">
                                             Con discapacidad motriz usuaria de silla de ruedas.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="muletasRadio" value="DisMotrizMuletas" onclick="habilitarDis();">
+                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="muletasRadio" value="Discapacidad motriz usuaria de muletas" onclick="habilitarDis();">
                                             <label class="form-check-label" for="muletasRadio">
                                             Con discapacidad motriz usuaria de muletas.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="bastonRadio" value="DisMotrizBaston" onclick="habilitarDis();">
+                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="bastonRadio" value="Discapacidad motriz usuaria de bastón" onclick="habilitarDis();">
                                             <label class="form-check-label" for="bastonRadio">
                                             Con discapacidad motriz usuaria de bastón.
                                             </label>
@@ -201,7 +235,7 @@
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="ningunaRadio" value="ninguna" onclick="habilitarDis();" checked>
+                                            <input class="form-check-input" type="radio" name="discapacidadRadio" id="ningunaRadio" value="Ninguna" onclick="habilitarDis();" checked>
                                             <label class="form-check-label" for="ningunaRadio">
                                             Ninguna
                                             </label>
@@ -213,7 +247,6 @@
                                     <label for="floatingDiscapacidad">Discapacidad:</label>
                                 </div>
                             </fieldset>
-                            <button type="button" class="btn btn-outline-danger">Limpiar</button>
                             <button type="button" class="btn btn-outline-primary" onclick="redirigirAPestaña();">Siguiente</button>
                         </div>
                         <!-- Pestaña Contacto -->
@@ -249,9 +282,9 @@
                                 <div class="form-floating mb-3">
                                     <input type="email" name="correo" id="floatingCorreo" class="form-control inputContacto" placeholder="abcd@ejemplo.com">
                                     <label for="floatingCorreo">Correo:</label>
+                                    <span id="errorCorreo" class="error"></span>
                                 </div>
                             </fieldset>
-                            <button type="button" class="btn btn-outline-danger">Limpiar</button>
                             <button type="button" class="btn btn-outline-primary" onclick="redirigirAPestaña2();">Siguiente</button>
                         </div>
                         <!-- Pestaña Procedencia -->
@@ -259,26 +292,26 @@
                             <fieldset>
                                 <div class="form-floating mb-3">
                                     <select name="EscP" id="floatingEscP" class="form-control" onchange="habilitarNomEsc();">
-                                        <option value="Cecyt1">CECyT 1 “González Vázquez Vega”</option>
-                                        <option value="Cecyt2">CECyT 2 "Miguel Bernard"</option>
-                                        <option value="Cecyt3">CECyT 3 "Estanislao Ramírez Ruiz"</option>
-                                        <option value="Cecyt4">CECyT 4 "Lázaro Cárdenas"</option>
-                                        <option value="Cecyt5">CECyT 5 "Benito Juárez García"</option>
-                                        <option value="Cecyt6">CECyT 6 "Miguel Othón de Mendizábal"</option>
-                                        <option value="Cecyt7">CECyT 7 "Cuauhtémoc"</option>
-                                        <option value="Cecyt8">CECyT 8 "Narciso Bassols García"</option>
-                                        <option value="Cecyt9">CECyT 9 "Juan de Dios Bátiz"</option>
-                                        <option value="Cecyt10">CECyT 10 "Carlos Vallejo Márquez"</option>
-                                        <option value="Cecyt11">CECyT 11 "Wilfrido Massieu Pérez"</option>
-                                        <option value="Cecyt12">CECyT 12 "José María Morelos y Pavón"</option>
-                                        <option value="Cecyt13">CECyT 13 "Ricardo Flores Magón"</option>
-                                        <option value="Cecyt14">CECyT 14 "Luis Enrique Erro"</option>
-                                        <option value="Cecyt15">CECyT 15 "Diódoro Antúnez Echegaray"</option>
-                                        <option value="Cecyt16">CECYT 16 "Hidalgo"</option>
-                                        <option value="Cecyt17">CECYT 17 "León, Guanajuato"</option>
-                                        <option value="Cecyt18">CECYT 18 "Zacatecas"</option>
-                                        <option value="Cecyt19">CECyT 19 “Leona Vicario”</option>
-                                        <option value="Cet">CET 1 “Walter Cross Buchanan”</option>
+                                        <option value="CECyT 1 González Vázquez Vega">CECyT 1 "González Vázquez Vega"</option>
+                                        <option value="CECyT 2 Miguel Bernard">CECyT 2 "Miguel Bernard"</option>
+                                        <option value="CECyT 3 Estanislao Ramírez Ruiz">CECyT 3 "Estanislao Ramírez Ruiz"</option>
+                                        <option value="CECyT 4 Lázaro Cárdenas">CECyT 4 "Lázaro Cárdenas"</option>
+                                        <option value="CECyT 5 Benito Juárez García">CECyT 5 "Benito Juárez García"</option>
+                                        <option value="CECyT 6 Miguel Othón de Mendizábal">CECyT 6 "Miguel Othón de Mendizábal"</option>
+                                        <option value="CECyT 7 Cuauhtémoc">CECyT 7 "Cuauhtémoc"</option>
+                                        <option value="CECyT 8 Narciso Bassols García">CECyT 8 "Narciso Bassols García"</option>
+                                        <option value="CECyT 9 Juan de Dios Bátiz">CECyT 9 "Juan de Dios Bátiz"</option>
+                                        <option value="CECyT 10 Carlos Vallejo Márquez">CECyT 10 "Carlos Vallejo Márquez"</option>
+                                        <option value="CECyT 11 Wilfrido Massieu Pérez">CECyT 11 "Wilfrido Massieu Pérez"</option>
+                                        <option value="CECyT 12 José María Morelos y Pavón">CECyT 12 "José María Morelos y Pavón"</option>
+                                        <option value="CECyT 13 Ricardo Flores Magón">CECyT 13 "Ricardo Flores Magón"</option>
+                                        <option value="CECyT 14 Luis Enrique Erro">CECyT 14 "Luis Enrique Erro"</option>
+                                        <option value="CECyT 15 Diódoro Antúnez Echegaray">CECyT 15 "Diódoro Antúnez Echegaray"</option>
+                                        <option value="CECYT 16 Hidalgo">CECYT 16 "Hidalgo"</option>
+                                        <option value="CECYT 17 León, Guanajuato">CECYT 17 "León, Guanajuato"</option>
+                                        <option value="CECYT 18 Zacatecas">CECYT 18 "Zacatecas"</option>
+                                        <option value="CECyT 19 Leona Vicario">CECyT 19 “Leona Vicario”</option>
+                                        <option value="CET 1 Walter Cross Buchanan">CET 1 “Walter Cross Buchanan”</option>
                                         <option value="Otros">Otra escuela</option>
                                     </select>
                                     <label for="floatingEscP">Escuela de procedencia:</label>
@@ -295,19 +328,19 @@
                                     <legend class="col-form-label col-sm-2 pt-0">ESCOM fue tu: </legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="OpRadio" id="1erOpRadio" value="PrimerOp" checked>
+                                            <input class="form-check-input" type="radio" name="OpRadio" id="1erOpRadio" value="Primer opción" checked>
                                             <label class="form-check-label" for="1erOpRadio">
                                             1er. Opción.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="OpRadio" id="2daOpRadio" value="SegundaOp">
+                                            <input class="form-check-input" type="radio" name="OpRadio" id="2daOpRadio" value="Segunda opción">
                                             <label class="form-check-label" for="2daOpRadio">
                                             2da. Opción.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="OpRadio" id="3erOpRadio" value="TercerOp">
+                                            <input class="form-check-input" type="radio" name="OpRadio" id="3erOpRadio" value="Tercer opción">
                                             <label class="form-check-label" for="3erOpRadio">
                                             3era. Opción.
                                             </label>
@@ -315,7 +348,7 @@
                                     </div>
                                 </fieldset>
                             </fieldset>
-                            <button type="button" class="btn btn-outline-danger">Limpiar</button>
+                            <button type="reset" class="btn btn-outline-danger">Limpiar</button>
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#checkDatos" id="mostrarModal">Guardar</button>
 
                             <!-- Modal -->
@@ -346,13 +379,12 @@
                                             <b>Correo:</b><p id="Correo"></p>
                                             <b>Escuela de procedencia:</b><p id="EscuelaProcedencia"></p>
                                             <b>Promedio:</b><p id="Promedio"></p>
+                                            <b>ESCOM fue:</b><p id="Opcion"></p>
                                         </div>
 
                                         <div class="modal-footer">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary justify-content-evenly" data-bs-dismiss="modal">Modificar</button>
-                                                <button type="submit" class="btn btn-success justify-content-end">Guardar</button>
-                                            </div>
+                                            <button type="button" class="btn btn-primary justify-content-evenly" data-bs-dismiss="modal">Modificar</button>
+                                            <button type="submit" class="btn btn-success justify-content-end">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -371,6 +403,7 @@
                         <a href="https://escom.ipn.mx/">
                             <img src="./img/escom.png" alt="ESCOM30Aniversario">
                         </a>
+                        <a href="./login.html" class="text-white">Administrador</a>
                     </div>
                 </div>
             </section>

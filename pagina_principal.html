@@ -12,6 +12,7 @@
     <title>.::Inicio::.</title>
 </head>
 <body>
+    <!-- Nav Principal -->
     <nav class="navbar navbar-expand-sm justify-content-sm-center sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="https://escom.ipn.mx/">
@@ -28,7 +29,7 @@
                         <a class="nav-link menuPrin activo" href="./inicio.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menuPrin" href="./proyecto.html">Registro</a>
+                        <a class="nav-link menuPrin" href="./proyectoAct.html">Registro</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menuPrin" href="./recuperarPDF.html">Recuperar PDF</a>
@@ -36,10 +37,86 @@
                 </ul>
             </div>
 
-            <span class="navbar-text justify-content-end">Instituto Politécnico Nacional</span>
+            <span class="navbar-text justify-content-end" id="IPN">Instituto Politécnico Nacional</span>
         </div>
     </nav>
-    <h1>Hola:DD</h1>
+    <!-- Carousel -->
+    <div id="carouselPagInicio" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselPagInicio" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Pagina ESCOM"></button>
+            <button type="button" data-bs-target="#carouselPagInicio" data-bs-slide-to="1" aria-label="Registro"></button>
+            <button type="button" data-bs-target="#carouselPagInicio" data-bs-slide-to="2" aria-label="Recuperar PDF"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/Carouselimg4.jpg" alt="PaginaESCOM" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h3 class="carouselTitulo">Pagina de ESCOM</h3>
+                    <p class="carouselTexto">Visita la pagina de ESCOM si necesitas más información.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./img/Carouselimg2.png" alt="AsignaciónGrupo" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h3 class="carouselTitulo">Examen diagnóstico</h3>
+                    <p class="carouselTexto">Registra tus datos para que se te pueda asignar un salón y grupo para tu examen diagnóstico.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./img/Carouselimg3.png" alt="RecuperarPDFAsignacion" class="d-block w-100">
+                <div class="carousel-caption">
+                    <h3 class="carouselTitulo">Recupera tu PDF</h3>
+                    <p class="carouselTexto">Si perdiste tu PDF, ingresa tu número de boleta y tu CURP para recuperarlo.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPagInicio" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselPagInicio" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+    <!-- contenido principal -->
+    <div class="container-fluid mt-3">
+    <h1>Acerca de nosotros</h1>
+        <p>Somos cuatro estudiantes de la carrera de Ingenieria en Sistemas Computacionales en la ESCOM (Escuela Superior de Computo), actualmente estamos cursando el cuarto semestre de la carrera. Este es un proyecto creado para la materia de Tecnologías para el Desarrollo de Aplicaciones Web, con el cual, buscamos agilizar el proceso de registro de datos para la asiganción de un horario y grupo para la realización del examen diagnóstico que se realiza al entrar a ESCOM.</p>
+        <div class="row">
+            <div class="col-sm-3">
+                <h1>Hola:DD</h1>
+            </div>
+            <div class="col-sm-3">
+                <h1>Hola:DD</h1>
+            </div>
+            <div class="col-sm-3">
+                <h1>Hola:DD</h1>
+            </div>
+            <div class="col-sm-3">
+                <h1>Hola:DD</h1>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-white" id="piePag">
+        <div class="p-4 pb-0">
+            <section class="">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <a href="https://escom.ipn.mx/">
+                            <img src="./img/escom.png" alt="ESCOM30Aniversario">
+                        </a>
+                        <a href="./login.html" class="text-white">Administrador</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="text-center p-3" id="derPiePag">
+            © 2023 Página creada por: Anuar, Imanol, Adolfo y Lucas
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

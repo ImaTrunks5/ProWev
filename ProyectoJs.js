@@ -2,9 +2,9 @@ function habilitarDis() //Función para habilitar el input de discapacidad al se
 {
     let InputDis = document.getElementById("floatingDiscapacidad");
     /* let RadioNo = document.getElementById("noRadio"); */
-    let RadioSi = document.getElementById("siRadio");
+    let RadioOtra = document.getElementById("otraRadio");
 
-    if (RadioSi.checked) 
+    if (RadioOtra.checked) 
     {
         InputDis.disabled = false;
     } else {
@@ -42,4 +42,26 @@ function habilitarNomEsc() //Función para habilitar el input Nombre Escuela al 
         selectAl.disabled = true;
         InputMun.disabled = false;
     }
+} */
+
+/* function redirigirAPestaña() {
+    // Activar la pestaña de contacto
+   console.log('Cambiando a la pestaña de contacto');
+
+    var myTab = new bootstrap.Tab(document.querySelector('#pestañaContacto'));
+    myTab.show();
+    document.body.scrollIntoView({
+        behavior: 'smooth' 
+    })
+}
+
+function redirigirAPestaña2() {
+    // Activar la pestaña de contacto
+    console.log('Cambiando a la pestaña de contacto');
+
+    var myTab = new bootstrap.Tab(document.querySelector('#pestañaProcedencia'));
+    myTab.show();
+    document.body.scrollIntoView({
+        behavior: 'smooth' 
+    })
 } */

@@ -70,3 +70,23 @@
 {
     color: red;
 }
+
+#piePag
+{
+    background-color: #0a4275;
+}
+
+#derPiePag
+{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carouselTitulo
+{
+    color: #0a4275;
+}
+
+.carouselTexto
+{
+    color: black;
+}
