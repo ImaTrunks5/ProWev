@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 
 -- Table structure for table `identidad`
 CREATE TABLE Identidad (
-    NoBoleta VARCHAR(20),
+    NoBoleta VARCHAR(20) NOT NULL,
     Nombre VARCHAR(50),
     ApellidoPaterno VARCHAR(50),
     ApellidoMaterno VARCHAR(50),
