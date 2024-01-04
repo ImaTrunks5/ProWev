@@ -7,8 +7,6 @@ if ($conexion->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si los campos están definidos y no están vacíos
-    echo "<p>Todo funciona bien.</p>";
-
     //Obterer datos de identidad
     $noBoleta = $_POST['NoBoleta'];
     $nombre = $_POST['Nombre'];
@@ -34,32 +32,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $promedio = $_POST['Promedio'];
     $escomOpcion = $_POST['OpRadio'];
 
-    //isertar datos de identidad en la base de datos
-    $sqlIdentidad = "INSERT INTO Identidad (NoBoleta, Nombre, ApellidoPaterno, ApellidoMaterno, CURP, FechaNacimiento, Genero, Discapacidad) 
-            VALUES ('$noBoleta', '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$curp', '$fechaNacimiento', '$genero', '$discapacidad')";
 
+    // Llamar al procedimiento almacenado para obtener el ID del salón
+    $sp_salon = 'ObtenerPrimerSalon';
+    $stmt = $conexion->prepare("CALL $sp_salon(@salonId)");
+    $stmt->execute();
 
-    if ($conexion->query($sqlIdentidad) !== TRUE) {
-        die("Error al insertar datos de identidad: " . $conexion->error);
+    // Verificar si se ejecutó correctamente
+    if (!$stmt) {
+        die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
     }
 
-    //isertar datos de contacto en la base de datos    
-    $sqlContacto = "INSERT INTO Contacto (Calle, numeroC, EntidadFederativa, MunicipioAlcaldia, CodigoPostal, Telefono, Correo, NoBoleta)
-    VALUES ('$calle', '$numeroC', '$entidadFederativa', '$munAl', '$codigoPostal', '$telefono', '$correo','$noBoleta')";
+    // Obtener el ID del salón después de llamar al procedimiento
+    $result = $conexion->query("SELECT @salonId AS salonId");
+    $salonRow = $result->fetch_assoc();
+    $salonId = $salonRow['salonId'];
 
-    if ($conexion->query($sqlContacto) !== TRUE) {
-        die("Error al insertar datos de contacto: " . $conexion->error);
+/* 
+    // Llamar al procedimiento almacenado
+    $sp_salon = 'ObtenerPrimerSalon';
+    $salon = $conexion->query("CALL $sp_salon(salonId)");
+
+    // Obtener el ID del salón después de llamar al procedimiento
+    $result = $conexion->query("SELECT @salonId AS salonId");
+    $salonRow = $result->fetch_assoc();
+    $salonId = $salonRow['salonId'];
+
+
+    // Verificar si se ejecutó correctamente
+    if ($salon) {
+        echo "Procedimiento almacenado ejecutado con éxito.";
+    } else {
+        echo "Error al ejecutar el procedimiento almacenado: " . $conexion->error;
     }
+*/
+    //insertar en la base de datos
+    $sqlAlumno = "INSERT INTO Alumno (NoBoleta,idSalon , Nombre, ApellidoPaterno, ApellidoMaterno, CURP, FechaNacimiento, Genero, Discapacidad, Calle, numeroC, EntidadFederativa, MunicipioAlcaldia, CodigoPostal, Telefono, Correo, EscuelaProcedencia, NombreEscuela, Promedio, ESCOM_Opcion) 
+            VALUES ('$noBoleta', '$salonId' , '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$curp', '$fechaNacimiento', '$genero', '$discapacidad', '$calle', '$numeroC', '$entidadFederativa', '$munAl', '$codigoPostal', '$telefono', '$correo', '$escuelaProcedencia', '$nombreEscuela', '$promedio', '$escomOpcion')";
 
-    //isertar datos de procedencia en la base de datos 
-    $sqlProcedencia = "INSERT INTO Procedencia (EscuelaProcedencia, NombreEscuela, Promedio, ESCOM_Opcion, NoBoleta)
-    VALUES ('$escuelaProcedencia', '$nombreEscuela', '$promedio', '$escomOpcion','$noBoleta')";
 
-    if ($conexion->query($sqlProcedencia) !== TRUE) {
-        die("Error al insertar datos de procedencia: " . $conexion->error);
+
+    if ($conexion->query($sqlAlumno) !== TRUE) {
+        die("Error al insertar datos del alumno: " . $conexion->error);
     }
-
-    echo "Datos insertados correctamente en la base de datos.";
+    
+    //echo "Datos insertados correctamente en la base de datos.";
+    
 
 }
 $conexion->close(); // Cerrar la conexión
