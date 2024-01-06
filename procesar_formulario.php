@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php'; // Archivo de conexión
+$conexion = mysqli_connect("localhost","root","","bdformulario"); // Conexión a la base de datos
 
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
@@ -81,4 +81,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 $conexion->close(); // Cerrar la conexión
+
 ?>
