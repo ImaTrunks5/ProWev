@@ -46,7 +46,6 @@ CREATE TABLE `alumno` (
   `Telefono` varchar(15) DEFAULT NULL,
   `Correo` varchar(100) DEFAULT NULL,
   `EscuelaProcedencia` varchar(100) DEFAULT NULL,
-  `NombreEscuela` varchar(100) DEFAULT NULL,
   `Promedio` float DEFAULT NULL,
   `ESCOM_Opcion` varchar(20) DEFAULT NULL,
   `idSalon` varchar(10) DEFAULT NULL
@@ -56,13 +55,13 @@ CREATE TABLE `alumno` (
 -- Volcado de datos para la tabla `alumno`
 --
 
-INSERT INTO `alumno` (`NoBoleta`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `CURP`, `FechaNacimiento`, `Genero`, `Discapacidad`, `Calle`, `NumeroC`, `EntidadFederativa`, `MunicipioAlcaldia`, `CodigoPostal`, `Telefono`, `Correo`, `EscuelaProcedencia`, `NombreEscuela`, `Promedio`, `ESCOM_Opcion`, `idSalon`) 
+INSERT INTO `alumno` (`NoBoleta`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `CURP`, `FechaNacimiento`, `Genero`, `Discapacidad`, `Calle`, `NumeroC`, `EntidadFederativa`, `MunicipioAlcaldia`, `CodigoPostal`, `Telefono`, `Correo`, `EscuelaProcedencia`, `Promedio`, `ESCOM_Opcion`, `idSalon`) 
 VALUES
-('2022630001', 'Juan', 'Pérez', 'González', 'PERJ930101HDFLRN05', '2003-01-01', 'Masculino', 'Ninguna', 'Av. Insurgentes Sur', '1234', 'Ciudad de México', 'Benito Juárez', '03810', '5551234567', 'juanP@alumno.ipn.mx', 'CECyT 1 González Vázquez Vega', NULL, 8.5, 'Primer opción', '1A'),
-('2022630002', 'María', 'García', 'López', 'GALM950202MSPRRN09', '2002-02-02', 'Femenino', 'Ninguna', 'Calle Reforma', '567', 'Nuevo León', 'Monterrey', '64000', '8187654321', 'margarc@alumnoguinda.ipn.mx', 'CECyT 2 Miguel Bernard', NULL, 9.2, 'Segunda opción', '1A'),
-('2022630003', 'Luis', 'Hernández', 'Martínez', 'HEMA980303MTSRRN03', '1998-03-03', 'Masculino', 'Ninguna', 'Calle Hidalgo', '890', 'Jalisco', 'Guadalajara', '44100', '3339876543', 'luishdz@alumno.ipn.com', 'CECyT 5 Benito Juárez García', NULL, 8.9, 'Tercer opción', '1A'),
-('2022630004', 'Ana', 'Rodríguez', 'Sánchez', 'ROSA970404MSMRRN08', '2001-04-04', 'Femenino', 'Discapacidad auditiva', 'Av. Juárez', '101', 'Puebla', 'Puebla', '72000', '2225554444', 'annna@alumnoguinda.mx.com', NULL, 'Preparatoria 2 de octubre', 8, 'Primer opción', '1A'),
-('2022630005', 'Pedro', 'López', 'Díaz', 'LODP960505HGRRRN07', '1999-05-05', 'Masculino', 'Discapacidad motriz usuaria de silla de ruedas', 'Av. Revolución', '2468', 'Baja California', 'Tijuana', '22000', '6643332222', 'pedrolopz@alumno.ipn.com', 'CECyT 15 Diódoro Antúnez Echegaray', NULL, 9.5, 'Segunda opción', '1A');
+('2022630001', 'Juan', 'Pérez', 'González', 'PERJ930101HDFLRN05', '2003-01-01', 'Masculino', 'Ninguna', 'Av. Insurgentes Sur', '1234', 'Ciudad de México', 'Benito Juárez', '03810', '5551234567', 'juanP@alumno.ipn.mx', 'CECyT 1 González Vázquez Vega', 8.5, 'Primer opción', '1A'),
+('2022630002', 'María', 'García', 'López', 'GALM950202MSPRRN09', '2002-02-02', 'Femenino', 'Ninguna', 'Calle Reforma', '567', 'Nuevo León', 'Monterrey', '64000', '8187654321', 'margarc@alumnoguinda.ipn.mx', 'CECyT 2 Miguel Bernard', 9.2, 'Segunda opción', '1A'),
+('2022630003', 'Luis', 'Hernández', 'Martínez', 'HEMA980303MTSRRN03', '1998-03-03', 'Masculino', 'Ninguna', 'Calle Hidalgo', '890', 'Jalisco', 'Guadalajara', '44100', '3339876543', 'luishdz@alumno.ipn.com', 'CECyT 5 Benito Juárez García', 8.9, 'Tercer opción', '1A'),
+('2022630004', 'Ana', 'Rodríguez', 'Sánchez', 'ROSA970404MSMRRN08', '2001-04-04', 'Femenino', 'Discapacidad auditiva', 'Av. Juárez', '101', 'Puebla', 'Puebla', '72000', '2225554444', 'annna@alumnoguinda.mx.com', 'Preparatoria 2 de octubre', 8, 'Primer opción', '1A'),
+('2022630005', 'Pedro', 'López', 'Díaz', 'LODP960505HGRRRN07', '1999-05-05', 'Masculino', 'Discapacidad motriz usuaria de silla de ruedas', 'Av. Revolución', '2468', 'Baja California', 'Tijuana', '22000', '6643332222', 'pedrolopz@alumno.ipn.com', 'CECyT 15 Diódoro Antúnez Echegaray', 9.5, 'Segunda opción', '1A');
 
 -- --------------------------------------------------------
 
