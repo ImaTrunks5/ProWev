@@ -26,6 +26,11 @@ function habilitarNomEsc() //Función para habilitar el input Nombre Escuela al 
     }
 }
 
+function abrirFormulario() {
+    document.getElementById("formregistrar").style.display = "block";
+}
+
+
 /* function habilitarAlcOMun() //Función para habilitar el input Alcaldía o Municipio dependiendo si se selecciona CDMX
 {
     let selectEst = document.getElementById("floatingEntidadFederativa");
