@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item" id="navPrincipal">
-                        <a class="nav-link menuPrin" href="./inicio.html">Inicio</a>
+                        <a class="nav-link menuPrin" href="./index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menuPrin" href="./proyectoAct.html">Registro</a>
@@ -46,7 +46,7 @@
             <img class="d-block mx-auto mb-4" src="./img/logoIpn.png" id="LogoIPNhead" alt="LogoIPN" width="72" height="57">
             <h1>Recuperación de PDF</h1>
             <p class="lead">Ingresa tu número de boleta y tu CURP para que puedas volver a descargar tu PDF de asignación de horario y grupo para el examen diagnóstico.</p>
-            <form>
+            <form id="RecuperarPDF" method="post" action="GenerarPDF.php">
                 <div class="form-floating mb-3">
                     <input type="text" name="NoBoleta" id="boletaFloating" class="form-control" placeholder=" ">
                     <label for="boletaFloating">Número de Boleta:</label>

@@ -14,6 +14,11 @@
     <script>
         $(document).ready(function()
         {
+            /* $(window).on('pageshow', function() 
+            {
+                $('#RegistroAlumnos')[0].reset();
+            }); */
+
             $("#mostrarModal").click(function() 
             {
                 // Lógica para obtener los valores y mostrar el modal
@@ -88,6 +93,26 @@
                     alert("Por favor rellene todos los campos de manera correcta .");
                 }
             });
+
+            /* $("#ResgistroAlumnos").on("submit", function(evento)
+            {
+                evento.preventDefault();
+
+                $.ajax({
+                    url: "procesar_formulario.php",
+                    method: "POST",
+                    cache: false,
+                    data: $("#RegistroAlumnos").serialize(),
+                    success: function(respAX) {
+                        document.getElementById('RegistroAlumnos').reset();
+                    }
+                });
+            }); */
+
+            /* document.addEventListener('DOMContentLoaded', function() 
+            {
+                document.getElementById('RegistroAlumnos').reset();
+            }); */
         });
     </script>
 
@@ -108,7 +133,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item" id="navPrincipal">
-                        <a class="nav-link menuPrin" href="./inicio.html">Inicio</a>
+                        <a class="nav-link menuPrin" href="./index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menuPrin activo" href="./proyectoAct.html">Registro</a>
@@ -143,7 +168,7 @@
                     </li>
                 </ul>
                 <!-- Creación del form -->
-                <form name="Registro" method="post"  onsubmit="return ValidarFormulario();" action="procesar_formulario.php">
+                <form name="Registro" method="post" id="RegistroAlumnos" onsubmit="return ValidarFormulario();" action="procesar_formulario.php">
                     <!-- Todo lo que va dentro de cada pestaña -->
                     <div class="tab-content" id="myTabContent">
                         <!-- Pestaña Identidad -->
@@ -321,7 +346,7 @@
                                     <label for="floatingNomEsc">Nombre de la escuela:</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="number" name="Promedio" id="floatingPromedio" class="form-control" placeholder=" ">
+                                    <input type="text" name="Promedio" id="floatingPromedio" class="form-control" placeholder=" ">
                                     <label for="floatingPromedio">Promedio:</label>
                                 </div>
                                 <fieldset class="row mb-3">

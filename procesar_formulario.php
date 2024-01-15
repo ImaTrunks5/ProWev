@@ -5,6 +5,7 @@
     if ($conexion->connect_error) {
         die("Conexión fallida: " . $conexion->connect_error);
     }
+    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -59,17 +60,17 @@
 
         // Llamar al procedimiento almacenado para obtener el ID del salón
         $sp_salon = 'ObtenerPrimerSalon';
-        $stmt = $conexion->prepare("CALL $sp_salon(@salonId)");
-        $stmt->execute();
+        $stmt1 = $conexion->prepare("CALL $sp_salon(@salonId)");
+        $stmt1->execute();
 
         // Verificar si se ejecutó correctamente
-        if (!$stmt) {
+        if (!$stmt1) {
             die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
         }
 
         // Obtener el ID del salón después de llamar al procedimiento
-        $result = $conexion->query("SELECT @salonId AS salonId");
-        $salonRow = $result->fetch_assoc();
+        $result1 = $conexion->query("SELECT @salonId AS salonId");
+        $salonRow = $result1->fetch_assoc();
         $salonId = $salonRow['salonId'];
 
         //insertar en la base de datos
@@ -79,6 +80,62 @@
         if ($conexion->query($sqlAlumno) !== TRUE) {
             die("Error al insertar datos del alumno: " . $conexion->error);
         }
+
+        // Obtener Número del salón
+        
+        $stm2 = $conexion->prepare("CALL ObtenerNoSalon(?, @salonNo)");
+        $stm2->bind_param("s", $salonId);
+        $stm2->execute();
+
+        if (!$stm2) {
+            die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
+        }
+
+        $result2 = $conexion->query("SELECT @salonNo AS salonNo");
+        $row2 = $result2->fetch_assoc();
+        $salonNo = $row2['salonNo'];
+
+        // Obtener ID del horario
+
+        $stm3 = $conexion->prepare("CALL ObteneridHorario(?, @horarioId)");
+        $stm3->bind_param("s", $salonId);
+        $stm3->execute();
+
+        if (!$stm3) {
+            die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
+        }
+
+        $result3 = $conexion->query("SELECT @horarioId AS horarioId");
+        $row3 = $result3->fetch_assoc();
+        $horarioId = $row3['horarioId'];
+
+        // Obtener Horario
+    
+        $stm4 = $conexion->prepare("CALL ObtenerHorario(?, @Horario)");
+        $stm4->bind_param("s", $horarioId);
+        $stm4->execute();
+
+        if (!$stm4) {
+            die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
+        }
+
+        $result4 = $conexion->query("SELECT @Horario AS Horario");
+        $row4 = $result4->fetch_assoc();
+        $Horario = $row4['Horario'];
+
+        // Obtener Dia
+
+        $stm5 = $conexion->prepare("CALL ObtenerDia(?, @Dia)");
+        $stm5->bind_param("s", $horarioId);
+        $stm5->execute();
+
+        if (!$stm5) {
+            die("Error al ejecutar el procedimiento almacenado: " . $conexion->error);
+        }
+
+        $result5 = $conexion->query("SELECT @Dia AS Dia");
+        $row5 = $result5->fetch_assoc();
+        $Dia = $row5['Dia'];
 
         //AddPage(orientación[PORTRAIT, LANDSCAPE], tamaño[A3, A4, A5,LETTER, LEGAL], rotación)
         //SetFont(tipo[COURIER, HELVETICA, ARIAL, TIMES, SYMBOL, ZAPDINGBATS], estilo[normal, B, I, U], tamaño)
@@ -101,7 +158,7 @@
         $pdf->SetFont('arial', 'B', 14);
         $pdf->Write(55, 'Datos registrados:');
         $pdf->Ln(31);
-        $pdf->SetFont('arial', '', 12);
+        $pdf->SetFont('arial', 'B', 12);
         $pdf->Cell(52, 10, 'Nombre: '.$nombre, 1, 0);
         $pdf->Cell(70, 10, 'Apellido Paterno: '.$apellidoPaterno, 1, 0);
         $pdf->Cell(70, 10, 'Apellido Materno: '.$apellidoMaterno, 1, 1);
@@ -119,17 +176,27 @@
         $pdf->Cell(40, 10, 'Promedio: '.$promedio, 1, 0);
         $pdf->Cell(62, 10, utf8_decode('ESCOM fue: '.$escomOpcion), 1, 1);
         $pdf->Cell(192, 10, utf8_decode('Escuela de Procedencia: '.$escuelaProcedencia), 1, 1);
+        $pdf->SetFont('arial', '', 12);
         $pdf->Ln(5);
         $pdf->Write(5, utf8_decode('Para poder realizar tu examen simulacro recuerda presentarte el día y hora asignados en este PDF, así como también llegar con este este documento firmado, recuerda que debes llevar lápiz, goma, sacapuntas y una pluma negra o roja. En el inicio de la página puedes encontrar un croquis que te ayudara a llegar a tu laboratorio asignado.'));
         $pdf->Ln(10);
+        $pdf->SetFont('arial', 'B', 12);
         $pdf->Cell(96, 10, 'Laboratorio: '.$salonId, 0, 0);
-        $pdf->Cell(96, 10, 'Horario: 10:30 lunes 15', 0, 1);
+        $pdf->Cell(96, 10, 'Horario: ' . $Horario . ' ' . $Dia, 0, 1);
         $pdf->Ln(40);
         $pdf->Cell(192, 10, '__________________________________', 0, 1, 'C');
-        $pdf->SetFont('times', 'I', '10');
+        $pdf->SetFont('times', 'B', '10');
         $pdf->Cell(192, 2, 'Firma del alumno.', 0, 1, 'C');
-        $pdf->Output('D', $noBoleta.'ExamenSimulacro.pdf');
+
+        $conexion->close(); // Cerrar la conexión
+
+        $RegistroPDF = './PDF/'.$noBoleta.'ExamenSimulacro.pdf';
+        $pdf->Output('F', $RegistroPDF);
+
+        header("Location: ".$RegistroPDF);
+
+        /* header("Location: index.html"); */
     }
 
-    $conexion->close(); // Cerrar la conexión
+    exit;
 ?>

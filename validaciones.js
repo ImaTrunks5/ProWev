@@ -109,7 +109,13 @@ function redirigirAPestaña2() {
    return bandera;
 }
 
-
+/* function regresarIndex()
+{
+    window.onload = function() 
+    {
+        window.location.href = "./index.html";
+    };
+} */
 
 function ValidarFormulario(){   
     var bandera=true;
@@ -134,6 +140,7 @@ function ValidarFormulario(){
 
     var Correo=document.getElementById('floatingCorreo').value;
     var errorCorreo= document.getElementById('errorCorreo');
+
     //var errorModal=document.getElementById('errorModal');
     
     if(!boletaReg.test(NoBoleta)){
@@ -208,6 +215,8 @@ function ValidarFormulario(){
        
         return false;
     }
+
+    /* document.getElementById('RegistroAlumnos').reset(); */
 
     //alert("estoy en el return true");
     return true;
