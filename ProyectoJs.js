@@ -20,15 +20,17 @@ function habilitarNomEsc() //Función para habilitar el input Nombre Escuela al 
 
     if (ValorEsc == "Otros") 
     {
+        console.log("Habilitando el campo Nombre Escuela");
         InputNomEsc.disabled = false;
     } else {
+
+        InputNomEsc.value = '';
+        console.log("Habilitando el campo Nombre Escuela");
         InputNomEsc.disabled = true;
     }
 }
 
-function abrirFormulario() {
-    document.getElementById("formregistrar").style.display = "block";
-}
+
 
 
 /* function habilitarAlcOMun() //Función para habilitar el input Alcaldía o Municipio dependiendo si se selecciona CDMX

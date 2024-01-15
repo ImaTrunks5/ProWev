@@ -7,21 +7,32 @@
     $apellidoMaterno = $_POST['txtApMat'];
     $curp = $_POST['txtCurp'];
     $fechaNacimiento = $_POST['dateFecha'];
-    $genero = $_POST['txtGen'];
+    $genero = $_POST['generoRadio'];
    // $discapacidad = isset($_POST['discapacidadRadio']) ? $_POST['discapacidadRadio'] : '';
-   $discapacidad = $_POST['txtDis'];
+   $discapacidad = $_POST['discapacidadRadio'];
+   
+    if ($discapacidad != 'Discapacidad auditiva' && $discapacidad !='Discapacidad motriz usuaria de silla de ruedas' && $discapacidad !='Discapacidad motriz usuaria de muletas' && $discapacidad !='Discapacidad motriz usuaria de bastón' && $discapacidad != 'Ninguna') {
+        $discapacidad = $_POST['discapacidad'];
+    }
     
     $calle = $_POST['txtcall'];
     $numeroC = $_POST['txtnumc'];
-    $entidadFederativa = $_POST['txtentf'];
-    $munAl = $_POST['txtmunAl'];
+    $entidadFederativa = $_POST['EntidadFederativa'];
+    $munAl = $_POST['MunAl'];
     $codigoPostal = $_POST['txtcodpos'];
     $telefono = $_POST['txttel'];
     $correo = $_POST['txtcor'];
     
+
+    $escuelaProcedencia = $_POST['EscP'];
+    if ($escuelaProcedencia==='Otros') {
+     $escuelaProcedencia=$_POST['NomEsc'];
+    }
+ 
+
     
-    $escuelaProcedencia = $_POST['txtescpro'];
-    $nombreEscuela = $_POST['txtnomesc']; 
+   
+    //$nombreEscuela = $_POST['NomEsc']; 
     $promedio = $_POST['txtprom'];
     $escomOpcion = $_POST['txtescomop'];
 
@@ -39,8 +50,8 @@
     $salonRow = $result->fetch_assoc();
     $salonId = $salonRow['salonId'];
     
-    $sqlAlumno = "INSERT INTO Alumno (NoBoleta,idSalon , Nombre, ApellidoPaterno, ApellidoMaterno, CURP, FechaNacimiento, Genero, Discapacidad, Calle, numeroC, EntidadFederativa, MunicipioAlcaldia, CodigoPostal, Telefono, Correo, EscuelaProcedencia, NombreEscuela, Promedio, ESCOM_Opcion) 
-    VALUES ('$noBoleta', '$salonId' , '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$curp', '$fechaNacimiento', '$genero', '$discapacidad', '$calle', '$numeroC', '$entidadFederativa', '$munAl', '$codigoPostal', '$telefono', '$correo', '$escuelaProcedencia', '$nombreEscuela', '$promedio', '$escomOpcion')";
+    $sqlAlumno = "INSERT INTO Alumno (NoBoleta,idSalon , Nombre, ApellidoPaterno, ApellidoMaterno, CURP, FechaNacimiento, Genero, Discapacidad, Calle, numeroC, EntidadFederativa, MunicipioAlcaldia, CodigoPostal, Telefono, Correo, EscuelaProcedencia, Promedio, ESCOM_Opcion) 
+    VALUES ('$noBoleta', '$salonId' , '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$curp', '$fechaNacimiento', '$genero', '$discapacidad', '$calle', '$numeroC', '$entidadFederativa', '$munAl', '$codigoPostal', '$telefono', '$correo', '$escuelaProcedencia', '$promedio', '$escomOpcion')";
 
 if ($conexion->query($sqlAlumno) !== TRUE) {
     die("Error al insertar datos del alumno: " . $conexion->error);

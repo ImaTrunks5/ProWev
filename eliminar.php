@@ -1,8 +1,8 @@
 <?php
     include_once("conexion.php");
-    $noBoleta = $_POST['NoBoleta'];
+    $noBoleta = $_GET['NoBoleta'];
  
-    mysqli_query($conexion, "DELETE FROM Alumno WHERE cod=$noBoleta");
+    mysqli_query($conexion, "DELETE FROM Alumno WHERE NoBoleta=$noBoleta");
     header("Location: CRUDadmin.html");
 
 ?>
