@@ -62,6 +62,10 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 	            border:1px solid black;
 	            cursor:pointer;
             }
+            tr {
+                min-height: 10px; /* o cualquier valor adecuado */
+            }   
+
         </style>
 </head>
 <body>
@@ -93,12 +97,30 @@ while($mostrar = mysqli_fetch_array($querybuscar))
                 <td>Fecha Nacimiento</td>
                 <td><input type="date" name="dateFecha" value="<?php echo $fechaNacimiento ;?>"required></td>
             </tr>
-            <tr> 
-                <td>Género</td>
-                <td><input type="text" name="txtGen" value="<?php echo $genero;?>"required></td>
+            <tr>
+                <td>Género:</td>
+                <td>
+                <fieldset class="row mb-3">
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="generoRadio" id="masculinoRadio" value="Masculino" <?php echo ($genero == 'Masculino') ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="masculinoRadio">Masculino</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="generoRadio" id="femeninoRadio" value="Femenino" <?php echo ($genero == 'Femenino') ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="femeninoRadio">Femenino</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="generoRadio" id="otroRadio" value="Otro" <?php echo ($genero == 'Otro') ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="otroRadio">Otro</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </td>
             </tr>
+
             <tr> 
-                <td>Discapacidad</td>
+                <td >Discapacidad</td>
                 <td><input type="text" name="txtDis" value="<?php echo $discapacidad;?>"required></td>
             </tr>
             <tr> 
@@ -179,7 +201,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $apellidoMaterno1=  $_POST['txtApMat'];
 	$curp1= $_POST['txtCurp'];
     $fechaNacimiento1 = $_POST['dateFecha'];
-    $genero1 =  $_POST['txtGen'];
+    $genero1 =  $_POST['generoRadio'];
     $discapacidad1 = $_POST['txtDis'];
     $calle1 =  $_POST['txtcall'];
 
@@ -200,7 +222,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 
 
 
-    $querymodificar = mysqli_query($conexion, "UPDATE Alumno SET `NoBoleta`='$noBoleta1',`Nombre`='$nombre1',`ApellidoPaterno`='$apellidoPaterno1',`ApellidoMaterno`='$apellidoMaterno1',`CURP`='$curp1',`FechaNacimiento`='$fechaNacimiento1',`Genero`='$genero1',`Discapacidad`='$discapacidad1',`Calle`='$calle1',`NumeroC`='$numeroC1',`EntidadFederativa`='$entidadFederativa1',`MunicipioAlcaldia`='$munAl1',`CodigoPostal`=' $codigoPostal1',`Telefono`='$telefono1',`Correo`='$correo1',`EscuelaProcedencia`='$escuelaProcedencia1',`NombreEscuela` " . ($nombreEscuela1 != '' ? "='$nombreEscuela1'" : '=NULL') . ",`Promedio`='$promedio1',`ESCOM_Opcion`='$escomOpcion1',`idSalon`='$idsalon' WHERE NoBoleta=$NoBoleta");
+    $querymodificar = mysqli_query($conexion, "UPDATE Alumno SET `NoBoleta`='$noBoleta1',`Nombre`='$nombre1',`ApellidoPaterno`='$apellidoPaterno1',`ApellidoMaterno`='$apellidoMaterno1',`CURP`='$curp1',`FechaNacimiento`='$fechaNacimiento1',`Genero`='$genero1',`Discapacidad`='$discapacidad1',`Calle`='$calle1',`NumeroC`='$numeroC1',`EntidadFederativa`='$entidadFederativa1',`MunicipioAlcaldia`='$munAl1',`CodigoPostal`='$codigoPostal1',`Telefono`='$telefono1',`Correo`='$correo1',`EscuelaProcedencia`='$escuelaProcedencia1',`NombreEscuela` " . ($nombreEscuela1 != '' ? "='$nombreEscuela1'" : '=NULL') . ",`Promedio`='$promedio1',`ESCOM_Opcion`='$escomOpcion1',`idSalon`='$idsalon' WHERE NoBoleta=$NoBoleta");
     echo "<script>window.location.href = 'CRUDadmin.html';</script>";
 
     
