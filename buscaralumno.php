@@ -16,8 +16,8 @@ include_once("conexion.php");
         echo "<td>".$mostrar['Nombre']."</td>";
         echo "<td>".$mostrar['ApellidoPaterno']."</td>";    
         echo "<td>".$mostrar['ApellidoMaterno']."</td>";  
-        echo "<td>".$mostrar['CURP']."</td>"; 
-        echo "<td style='width:26%'><a href=\"editar.php?NoBoleta=$mostrar[NoBoleta]\" class='btn btn-primary'>Modificar</a> | <a href=\"eliminar.php?NoBoleta=$mostrar[NoBoleta]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[Nombre]?')\" class='btn btn-danger'>Eliminar</a></td>";    
-    }
+        echo "<td>".$mostrar['CURP']."</td>";
+        echo "<td style='width:26%'><a href=\"ver.php?NoBoleta=$mostrar[NoBoleta]\" class='btn btn-info'>Revisar</a>  <a href=\"editar.php?NoBoleta=$mostrar[NoBoleta]\" class='btn btn-primary'>Modificar</a>  <a href=\"eliminar.php?NoBoleta=$mostrar[NoBoleta]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[Nombre]?')\" class='btn btn-danger'>Eliminar</a></td>";    
+}
 
 ?>
